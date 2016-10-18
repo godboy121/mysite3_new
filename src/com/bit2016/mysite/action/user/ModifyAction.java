@@ -20,18 +20,21 @@ public class ModifyAction implements Action {
 		String name=request.getParameter("name");
 		String password=request.getParameter("password");
 		String gender=request.getParameter("gender");
-		String no=request.getParameter("no");//no는 int형으로 선언해주었는데 뭔지 모르겠는데 string으로 받는데..
-		//HttpSession session = request.getSession();
-		//UserVo vo=(UserVo) session.getAttribute("authUser");
+		//String no=request.getParameter("no");//no는 int형으로 선언해주었는데 뭔지 모르겠는데 string으로 받는데..
+		HttpSession session = request.getSession();
+		UserVo vo=(UserVo) session.getAttribute("authUser");
 		
 		UserDao dao=new UserDao();
-		UserVo vo=new UserVo();
-		vo.setNo(Integer.parseInt(no));//23번쨰 줄의 이유로 integer.parint(no)로 해준다.
-		//vo.setNo(vo.getNo());
+		//vo.setNo(Integer.parseInt(no));//23번쨰 줄의 이유로 integer.parint(no)로 해준다.
+		vo.setNo(vo.getNo());
 		vo.setName(name);
 		vo.setPasswd(password);
 		vo.setGender(gender);
 		vo=dao.update(vo);
+		
+		vo.setName(name);
+		session.setAttribute("authUser", vo);
+		
 		
 		WebUtil.redirect(request, response, "/mysite3/main" );
 		

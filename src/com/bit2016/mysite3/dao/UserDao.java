@@ -145,7 +145,7 @@ public class UserDao {
 		PreparedStatement pstmt=null;
 		try {
 			conn=getConnection();
-			String sql="insert into users values(users_seq.nextval,?,?,?,?)";
+			String sql="insert into users values(user_seq.nextval,?,?,?,?)";
 			pstmt=conn.prepareStatement(sql);
 			
 			pstmt.setString(1, vo.getName());

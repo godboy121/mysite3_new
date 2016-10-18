@@ -1,26 +1,21 @@
-package com.bit2016.mysite.actionmain;
+package com.bit2016.mysite.action.guestmain;
 
 import java.io.IOException;
-import java.net.HttpCookie;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bit2016.web1.Action;
 import com.bit2016.web.util.WebUtil;
+import com.bit2016.web1.Action;
 
-
-public class MainAction implements Action {
+public class GuestMainaction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		WebUtil.forward(request, response, "/WEB-INF/views/guestbook/list.jsp");
 
-		
-		WebUtil.forward(
-			request, 
-			response, 
-			"/WEB-INF/views/main/index.jsp" );
 	}
+
 }
